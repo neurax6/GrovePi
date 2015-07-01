@@ -307,7 +307,6 @@ def dht(pin, module_type):
         else:
             h = h + h_val
     # convert back to float
-    print(type(h), h)
     hum = float(convert(h))
     return [t, hum]
 

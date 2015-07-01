@@ -127,10 +127,10 @@ class Dht(object):
         while self.__on:
             try:
                 if len(self.__dataTemp) == 59:
-                    self.setaveragetemp(sum(self.__dataTemp/60))
+                    self.setaveragetemp(sum(self.__dataTemp)/60)
                     del self.__dataTemp[:]
                 if len(self.__dataHum) == 59:
-                    self.setaveragehum(sum(self.__dataTemp/60))
+                    self.setaveragehum(sum(self.__dataTemp)/60)
                     del self.__dataHum[:]
                 [temp, humidity] = grovepi.dht(self.__sensor, 1)
                 self.setdatatemp(temp), self.setdatahum(humidity)

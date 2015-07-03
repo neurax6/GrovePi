@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 
 #Create a  DBAPI connection
 
-engine = sqlalchemy.create_engine('postgresql://postgres:M4lh4v0C@192.168.0.103:5432/raspy')
+engine = sqlalchemy.create_engine('postgresql://postgres:@192.168.0.103:5432/raspy')
 
 #Declare an instance of the Base class for mapping tables
 

@@ -29,6 +29,8 @@ class Dht(object):
             p_data_hum = []
         if not p_average_temp:
             p_average_temp = []
+
+
         if not p_average_hum:
             p_average_hum = []
         self.__name = p_name  # Name &/or description of the sensor.

@@ -17,9 +17,11 @@
 # Last Updated: 01 June 2015
 # http://www.dexterindustries.com/
 
+# noinspection PyUnresolvedReferences
 import smbus
 import time
 import math
+# noinspection PyUnresolvedReferences
 import RPi.GPIO as GPIO
 
 

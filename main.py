@@ -4,7 +4,7 @@ from validationsleeptime import *
 
 def main():
 
-    sensor = Dht("10:00")
+    sensor = Dht("1000")
 
     print(sensor.getname())
     sensor.setname("lplololol")

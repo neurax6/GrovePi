@@ -9,12 +9,16 @@ import grovepi
 # SIG,NC,VCC,GND
 class Dht(object):
     """Class docstring."""
-
+    @new_contract
+    def valsleeptime(x):
+        if not validesleeptime(x):
+            msg = 'Invalid format.' % x
+            raise ValueError(msg)
     @contract(p_name='str')
     @contract(p_sensor='int,>0')
     @contract(p_mu='str')
     @contract(p_sleep='bool')
-    @contract(p_sleep_time='str,validationsleeptime',)
+    @contract(p_sleep_time='str,valsleeptime',)
     @contract(p_on='bool')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
@@ -47,11 +51,7 @@ class Dht(object):
         self.__averageHum = p_average_hum
         """Get and set"""
 
-    @new_contract
-    def validationsleeptime(x):
-        if not validesleeptime(x):
-            msg = 'Invalid format.' % x
-            raise ValueError(msg)
+
 
     def getname(self):
         return self.__name

@@ -37,6 +37,7 @@ class Dht(object):
     def f(x):
         pass
 
+
     @contract(p_on='bool')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):

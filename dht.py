@@ -34,11 +34,8 @@ class Dht(object):
     @contract(p_mu='corf')
     @contract(p_sleep='bool')
     @contract(p_sleep_time='valsleeptime',)
-    def f(x):
-        pass
-
-
     @contract(p_on='bool')
+    @contract(p_data_temp='int')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
 
@@ -106,28 +103,27 @@ class Dht(object):
 
     def getsensor(self):
         return self.__sensor
-
+    @contract(p_sensor='int,>0')
     def setsensor(self, p_sensor):
         self.__sensor = p_sensor
-
+    @contract(p_mu='corf')
     def setmu(self, p_mu):
         self.__mu = p_mu
 
     def getmu(self):
         return self.__mu
 
+    @contract(p_sleep='bool')
     def setsleep(self, p_sleep):
         self.__sleep = p_sleep
-
     def getsleep(self):
         return self.__sleep
-
+    @contract(p_sleep_time='valsleeptime',)
     def setsleeptime(self, p_sleep_time):
         self.__sleep_time = p_sleep_time
-
     def getsleeptime(self):
         return self.__sleep_time
-
+    @contract(p_on='bool')
     def seton(self, p_on):
         self.__on = p_on
 

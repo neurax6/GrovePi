@@ -43,7 +43,7 @@ class Dht(object):
         """Method docstring.
         :type p_data_hum: float
         :type p_ondsfdasfdsafdfdsasafdsafdsfdsa: Bool
-        :type p_sleep: Bool
+        :type pdsfsafdsafdsfdsf_sleep: Bool
         """
         if not p_data_temp:
             p_data_temp = []

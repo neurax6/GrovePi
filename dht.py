@@ -2,26 +2,43 @@ _author__ = 'neuraxis'
 from contracts import contract, new_contract
 from validationsleeptime import *
 import grovepi
+    """Class docstring.
 
+        :type p_data_hum: float
+        :type p_on: Bool
+        :type p_sleep: Bool
+    """
 
 
 # Connect the Grove Temperature & Humidity Sensor Pro to digital port D4
 # SIG,NC,VCC,GND
 class Dht(object):
-    """Class docstring."""
+    """Class docstring.
+
+        :type p_data_hum: float
+        :type p_on: Bool
+        :type p_sleep: Bool
+    """
     @new_contract
     def valsleeptime(x):
         if not validesleeptime(x):
             msg = 'Invalid format.'
             raise ValueError(msg)
+    def corf(x):
+        if not 'C' or not 'F':
+            msg = 'Invalid entry: C or F'
+            raise ValueError(msg)
+
     @contract(p_name='str')
     @contract(p_sensor='int,>0')
-    @contract(p_mu='str')
+    @contract(p_mu='corf')
     @contract(p_sleep='bool')
-    @contract(p_sleep_time='str,valsleeptime',)
+    @contract(p_sleep_time='valsleeptime',)
     @contract(p_on='bool')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
+
+
         """Method docstring.
         :type p_data_hum: float
         :type p_on: Bool

@@ -12,7 +12,7 @@ class Dht(object):
     @new_contract
     def valsleeptime(x):
         if not validesleeptime(x):
-            msg = 'Invalid format.' % x
+            msg = 'Invalid format.'
             raise ValueError(msg)
     @contract(p_name='str')
     @contract(p_sensor='int,>0')

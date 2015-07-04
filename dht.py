@@ -2,12 +2,11 @@ _author__ = 'neuraxis'
 from contracts import contract, new_contract
 from validationsleeptime import *
 import grovepi
-    """Class docstring.
-
-        :type p_data_hum: float
-        :type p_on: Bool
-        :type p_sleep: Bool
-    """
+"""Class docstring.
+    :type p_data_hum: float
+    :type p_on: Bool
+    :type p_sleep: Bool
+"""
 
 
 # Connect the Grove Temperature & Humidity Sensor Pro to digital port D4

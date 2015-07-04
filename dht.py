@@ -35,14 +35,14 @@ class Dht(object):
     @contract(p_sleep='bool')
     @contract(p_sleep_time='valsleeptime',)
     @contract(p_on='bool')
-    @contract(p_data_temp='int')
+    @contract(p_data_temp='None')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
 
 
         """Method docstring.
         :type p_data_hum: float
-        :type p_ondsfdasfdsafdsafdsafdsfdsa: Bool
+        :type p_ondsfdasfdsafdfdsasafdsafdsfdsa: Bool
         :type p_sleep: Bool
         """
         if not p_data_temp:
@@ -79,7 +79,7 @@ class Dht(object):
 
     def getdatatemp(self):
         return self.__dataTemp
-
+    @contract(p_data_temp='int')
     def setdatatemp(self, p_data_temp):
         self.__dataTemp.append(p_data_temp)
 

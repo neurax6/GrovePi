@@ -8,7 +8,15 @@ db = SQLAlchemy(app)
 
 
 Class Pin(db.Model):
-    id= Column()
+    id = Column(InterruptedError,primary_key=True)
+    temp = Column(Float,unique=False)
+    hum = Column(Float,unique=False)
+    date = Column(String,unique=False)
+
+db.create_all()
+
+@app.route('/')
+
 
 
 

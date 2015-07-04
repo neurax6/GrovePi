@@ -14,7 +14,7 @@ class Dht(object):
     @contract(p_sensor='int,>0')
     @contract(p_mu='str')
     @contract(p_sleep='bool')
-    @contract(p_sleep_time='str')
+    @contract(p_sleep_time='str,validationsleeptime',)
     @contract(p_on='bool')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):

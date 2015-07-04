@@ -23,6 +23,7 @@ class Dht(object):
         if not validesleeptime(x):
             msg = 'Invalid format.'
             raise ValueError(msg)
+    @new_contract
     def corf(x):
         if not 'C' or not 'F':
             msg = 'Invalid entry: C or F'

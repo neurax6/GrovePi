@@ -36,6 +36,9 @@ class Dht(object):
     @contract(p_sleep_time='valsleeptime',)
     @contract(p_on='bool')
     @contract(p_data_temp='None')
+    @contract(p_data_hum='None')
+    @contract(p_average_temp='None')
+    @contract(p_average_hum='None')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
 
@@ -70,48 +73,37 @@ class Dht(object):
         """Get and set"""
 
 
-
+    @contract(__name='str')
     def getname(self):
+        """
+
+        Get device name.
+        :return: :string:
+        """
+
         return self.__name
     @contract(p_name='str')
     def setname(self, p_name):
+        """
+        :precondition string:
+        :param p_name:
+        """
         self.__name = p_name
 
-    def getdatatemp(self):
-        return self.__dataTemp
-    @contract(p_data_temp='int')
-    def setdatatemp(self, p_data_temp):
-        self.__dataTemp.append(p_data_temp)
-
-    def getdatahum(self):
-        return self.__dataHum
-
-    def setdatahum(self, p_data_hum):
-        self.__dataHum.append(p_data_hum)
-
-    def getaveragetemp(self):
-        return self.__averageTemp
-
-    def setaveragetemp(self, p_average_temp):
-        self.__averageTemp.append(p_average_temp)
-
-    def getaveragehum(self):
-        return self.__averageHum
-
-    def setaveragehum(self, p_average_hum):
-        self.__averageHum.append(p_average_hum)
 
     def getsensor(self):
         return self.__sensor
     @contract(p_sensor='int,>0')
     def setsensor(self, p_sensor):
         self.__sensor = p_sensor
-    @contract(p_mu='corf')
-    def setmu(self, p_mu):
-        self.__mu = p_mu
+
 
     def getmu(self):
         return self.__mu
+
+    @contract(p_mu='corf')
+    def setmu(self, p_mu):
+        self.__mu = p_mu
 
     @contract(p_sleep='bool')
     def setsleep(self, p_sleep):

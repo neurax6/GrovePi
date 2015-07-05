@@ -270,9 +270,11 @@ class Dht(object):
 
 
         """
+        i=0
         while self.__on:
+
             try:
-                i=0
+
                 if len(self.__dataTemp) == 59:
                     self.setaveragetemp(sum(self.__dataTemp) / 60)
                     del self.__dataTemp[:]

@@ -44,6 +44,7 @@ class Dht(object):
 
 
         """
+
     @new_contract
     def valsleeptime(x):
         if not valsleeptime(x):
@@ -68,10 +69,10 @@ class Dht(object):
     @contract(p_average_hum='None')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
-       if type(p_name)is not str:
-        raise AssertionError("name is not a string: %r" % p_name)
 
 
+        if not type(p_name) != str:
+            raise AssertionError("name is not a string: %r" % p_name)
         if not p_data_temp:
             p_data_temp = []
         if not p_data_hum:
@@ -272,7 +273,7 @@ class Dht(object):
 
 
         """
-        i=0
+        i = 0
         while self.__on:
 
             try:
@@ -285,8 +286,8 @@ class Dht(object):
                     del self.__dataHum[:]
                 [temp, humidity] = grovepi.dht(self.__sensor, 1)
                 self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
-                print("entry #:",i,"temp =", temp, " humidity =", humidity)
-                i+=1
+                print("entry #:", i, "temp =", temp, " humidity =", humidity)
+                i += 1
             except IOError:
                 print(0)
 

@@ -71,7 +71,7 @@ class Dht(object):
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
 
 
-        if type(p_name) != class 'str':
+        if type(p_name) != <class 'str'>:
             raise AssertionError("name is not a string: %r" % p_name)
         if not p_data_temp:
             p_data_temp = []

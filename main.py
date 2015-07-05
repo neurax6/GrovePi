@@ -1,3 +1,5 @@
+from time import sleep
+
 __author__ = 'neuraxis'
 from dht import *
 from validationsleeptime import *
@@ -12,6 +14,8 @@ def main():
     print(validesleeptime("2300"))
     sensor.run()
     temp = sensor.getaveragetemp()
-    print(temp[0])
+    for i in temp:
+        print(i)
+    sleep(60)
 if __name__ == "__main__":
     main()

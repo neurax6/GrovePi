@@ -11,7 +11,7 @@ def main():
     print(sensor.getname())
     sensor.setname("lplololol")
     print(sensor.getname())
-    print(validesleeptime("2300"))
+    print(valsleeptime("2300"))
     sensor.run()
     temp = sensor.getaveragetemp()
     sleep(60)

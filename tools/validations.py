@@ -1,7 +1,7 @@
 __author__ = 'neuraxis'
 
 
-def validesleeptime(p_sleep_time):
+def valsleeptime(p_sleep_time):
     if len(p_sleep_time) != 4:return False
     i = 0
     while i <= 3:

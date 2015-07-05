@@ -1,6 +1,7 @@
 _author__ = 'neuraxis'
 from contracts import contract, new_contract
-from validationsleeptime import *
+
+from tools.validations import valsleeptime
 import grovepi
 
 
@@ -45,7 +46,7 @@ class Dht(object):
         """
     @new_contract
     def valsleeptime(x):
-        if not validesleeptime(x):
+        if not valsleeptime(x):
             msg = 'Invalid format.'
             raise ValueError(msg)
 
@@ -67,7 +68,8 @@ class Dht(object):
     @contract(p_average_hum='None')
     def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
-
+       if type(p_name)is not str:
+        raise AssertionError("name is not a string: %r" % p_name)
 
 
         if not p_data_temp:

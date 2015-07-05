@@ -2,7 +2,7 @@ from time import sleep
 
 __author__ = 'neuraxis'
 from dht import *
-from validationsleeptime import *
+
 
 def main():
 

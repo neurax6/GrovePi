@@ -17,26 +17,11 @@
 # Last Updated: 01 June 2015
 # http://www.dexterindustries.com/
 
-# noinspection PyUnresolvedReferences
-import smbus
-import time
-import math
-# noinspection PyUnresolvedReferences
+from tools.converters import hextofloat
+import smbus,time,math
 import RPi.GPIO as GPIO
 
-
-from ctypes import *
-
-
-def convert(s):
-    i = int(s, 16)  # Hex to int
-    cp = pointer(c_int(i))  # Int to C int
-    fp = cast(cp, POINTER(c_float))  # cast the int pointer to a float pointer
-    return fp.contents.value  # dereference the pointer, get the float
-
-
 debug = 0
-
 rev = GPIO.RPI_REVISION
 if rev == 2 or rev == 3:
     bus = smbus.SMBus(1)
@@ -290,7 +275,7 @@ def dht(pin, module_type):
         # convert the temp back to float
         #	print(type(h),h)
         #	print(convert(h))
-    t = float(convert(h))
+    t = float(hextofloat(h))
 
     h = ''
     # data is reversed
@@ -309,7 +294,7 @@ def dht(pin, module_type):
         else:
             h = h + h_val
     # convert back to float
-    hum = float(convert(h))
+    hum = float(hextofloat(h))
     return [t, hum]
 
 

@@ -44,9 +44,8 @@ class Dht(object):
 
 
         """Method docstring.
-        :type p_data_hum: float
-        :type p_ondsfdasfdsafdfdsasafdsafdsfdsa: Bool
-        :type pdsfsafdsafdsfdsf_sleep: Bool
+
+        :type self: booool
         """
         if not p_data_temp:
             p_data_temp = []
@@ -70,17 +69,14 @@ class Dht(object):
         self.__dataHum = p_data_hum
         self.__averageTemp = p_average_temp
         self.__averageHum = p_average_hum
-        """Get and set"""
 
 
-    @contract(__name='str')
+
     def getname(self):
         """
-
         Get device name.
         :return: :string:
         """
-
         return self.__name
     @contract(p_name='str')
     def setname(self, p_name):
@@ -92,35 +88,106 @@ class Dht(object):
 
 
     def getsensor(self):
+        """
+
+
+        :return: :rtype:
+        """
         return self.__sensor
     @contract(p_sensor='int,>0')
     def setsensor(self, p_sensor):
+        """
+
+        :param p_sensor:
+        """
         self.__sensor = p_sensor
 
 
     def getmu(self):
+        """
+
+
+        :return: :rtype:
+        """
         return self.__mu
 
     @contract(p_mu='corf')
     def setmu(self, p_mu):
+        """
+
+        :param p_mu:
+        """
         self.__mu = p_mu
 
     @contract(p_sleep='bool')
     def setsleep(self, p_sleep):
+        """
+
+        :param p_sleep:
+        """
         self.__sleep = p_sleep
     def getsleep(self):
+        """
+
+
+        :return: :rtype:
+        """
         return self.__sleep
     @contract(p_sleep_time='valsleeptime',)
+
     def setsleeptime(self, p_sleep_time):
+        """
+        :param p_sleep_time:
+        """
         self.__sleep_time = p_sleep_time
     def getsleeptime(self):
+        """
+
+
+        :return: :rtype:
+        """
         return self.__sleep_time
     @contract(p_on='bool')
     def seton(self, p_on):
+        """
+
+        :rtype : object
+        """
         self.__on = p_on
 
     def geton(self):
+        """
+
+
+        :return: :rtype:
+        """
         return self.__on
+
+    def getdatatemp(self):
+        return self.__dataTemp
+    @contract(p_data_temp='float')
+    def setdatatemp(self, p_data_temp):
+        self.__dataTemp.append(p_data_temp)
+
+    def getdatahum(self):
+        return self.__dataHum
+    @contract(p_data_hum='float')
+    def setdatahum(self, p_data_hum):
+        self.__dataHum.append(p_data_hum)
+
+    def getaveragetemp(self):
+        return self.__averageTemp
+    @contract(p_average_temp='float')
+    def setaveragetemp(self, p_average_temp):
+        self.__averageTemp.append(p_average_temp)
+
+    def getaveragehum(self):
+        return self.__averageHum
+    @contract(p_average_hum='float')
+    def setaveragehum(self, p_average_hum):
+        self.__averageHum.append(p_average_hum)
+
+
 
     name = property(getname, setname)
     sensor = property(getsensor, setsensor)

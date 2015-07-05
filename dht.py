@@ -22,7 +22,7 @@ class Dht(object):
 
         :param p_name: Names of the device, dht in our case.
         :param p_sensor: Sensor device number on your GrovePi board.
-        :param p_mu: Measurement unit , Celcius or Fahrenheits.
+        :param p_mu: Measurement unit , Celcius or Fahrenheits. Data are always stored in Celcius,changing the setting to 'F' will only affect display.
         :param p_sleep: Device sleeping ?
         :param p_sleep: Device sleeping at which time, using military format ex: '1000' for (10am) '2300' (11pm)
         :param p_on: Device reading data.
@@ -282,7 +282,7 @@ class Dht(object):
                     self.setaveragehum(sum(self.__dataHum) / 60)
                     del self.__dataHum[:]
                 [temp, humidity] = grovepi.dht(self.__sensor, 1)
-                self.setdatatemp(temp), self.setdatahum(humidity)
+                self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
                 print("entry #:",i,"temp =", temp, " humidity =", humidity)
                 i+=1
             except IOError:

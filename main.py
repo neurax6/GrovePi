@@ -14,6 +14,7 @@ def main():
     print(validesleeptime("2300"))
     sensor.run()
     temp = sensor.getaveragetemp()
+    sleep(60)
     for i in temp:
         print(i)
     sleep(60)

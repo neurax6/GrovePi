@@ -67,12 +67,12 @@ class Dht(object):
     @contract(p_data_hum='None')
     @contract(p_average_temp='None')
     @contract(p_average_hum='None')
-    def __init__(self, p_sleep_time, p_name="dht", p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
+    def __init__(self, p_sleep_time, p_name='dht', p_sensor=5, p_mu="C", p_sleep=True, p_on=True, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None):
 
 
         if isinstance(p_name, str):
-            raise AssertionError("name is not a string: %r" % p_name)
+            raise AssertionError("name is not a string:",p_name)
         if not p_data_temp:
             p_data_temp = []
         if not p_data_hum:

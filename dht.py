@@ -159,7 +159,7 @@ class Dht(object):
 
             :param p_data_temp:
         """
-        if not isinstance(p_data_temp, None):
+        if not isinstance(p_data_temp, float):
             raise AssertionError("Must not be set on start", p_data_temp)
 
         self.__dataTemp.append(p_data_temp)
@@ -170,21 +170,11 @@ class Dht(object):
 
             :param p_data_hum:
         """
-        if not isinstance(p_data_hum, None):
+        if not isinstance(p_data_hum, float):
             raise AssertionError("Must not be set on start", p_data_hum)
         self.__dataHum.append(p_data_hum)
 
-        def setaveragetemp(self, p_average_temp):
 
-            """
-
-                :param p_average_temp:
-            """
-
-        if not isinstance(p_average_temp, None):
-            raise AssertionError("Must not be set on start", p_average_temp)
-
-        self.__averageTemp.append(p_average_temp)
 
 
     def setaveragetemp(self, p_average_temp):
@@ -192,7 +182,7 @@ class Dht(object):
 
             :param p_average_temp:
         """
-        if not isinstance(p_average_temp, None):
+        if not isinstance(p_average_temp, float):
             raise AssertionError("Must not be set on start", p_average_temp)
         self.__averageHum.append(p_average_temp)
 
@@ -202,7 +192,7 @@ class Dht(object):
 
             :param p_average_hum:
         """
-        if not isinstance(p_average_hum, None):
+        if not isinstance(p_average_hum, float):
             raise AssertionError("Must not be set on start", p_average_hum)
         self.__averageHum.append(p_average_hum)
 

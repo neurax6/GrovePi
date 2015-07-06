@@ -385,8 +385,8 @@ class Dht(object):
         self.setsensor(int(f.readline()[0:len(f.readline())-1]))
         self.setmu(str(f.readline()[0:len(f.readline())-1]))
         self.setsleep(bool(f.readline()[0:len(f.readline())-1]))
-        self.setlink(f.readline()[0:len(f.readline())-1]))
-        self.setlinkid(f.readline()[0:len(f.readline())-1]))
+        self.setlink(f.readline()[0:len(f.readline()) - 1])
+        self.setlinkid(f.readline()[0:len(f.readline()) - 1])
         f.close()
     def readconfig(self,p_file):
         t = "{0}.cfg".format(p_file)

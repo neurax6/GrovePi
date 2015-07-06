@@ -344,9 +344,9 @@ def run(self):
             [temp, humidity] = grovepi.dht(self.__sensor, 1)
             self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
             if self.__mu is 'F':
-            temp = (temp * 1.8) + 32
-            print("entry #:", i, "temp =", temp,getmu(), " humidity =", humidity)
-            i += 1
+                temp = (temp * 1.8) + 32
+                print("entry #:", i, "temp =", temp,getmu(), " humidity =", humidity)
+                i += 1
         except IOError:
             print(0)
 

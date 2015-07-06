@@ -335,7 +335,6 @@ class Dht(object):
 
     def run(self):
         """
-        × 1.8 + 32
         """
         i = 0
         while self.__on:

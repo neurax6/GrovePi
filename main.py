@@ -14,5 +14,9 @@ def main():
     print(valsleeptime("2300"))
     sensor.run()
     temp = sensor.getaveragetemp()
+    sleep(60)
+    for i in temp:
+        print(i)
+    sleep(60)
 if __name__ == "__main__":
     main()

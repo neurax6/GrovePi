@@ -353,7 +353,7 @@ class Dht(object):
                     del self.__dataHum[:]
                 [temp, humidity] = grovepi.dht(self.__sensor, 1)
                 self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
-                if self.__mu is 'F':
+                if self.__mu == 'F':
                     temp = (temp * 1.8) + 32
                     print("entry #:", i, "temp =", temp, getmu(), " humidity =", humidity)
                     i += 1

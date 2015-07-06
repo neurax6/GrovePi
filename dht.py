@@ -381,18 +381,18 @@ class Dht(object):
             f = open(t, 'r')
         except:
             print("non")
-        self.setname(str(f.readline()))
-        self.setsensor(int(f.readline()))
-        self.setmu(str(f.readline()))
-        self.setsleep(bool(f.readline()))
-        self.setlink(f.readline())
-        self.setlink_id(f.readline())
+        self.setname(str(f.readline()[0:len(f.readline())-1]))
+        self.setsensor(int(f.readline()[0:len(f.readline())-1]))
+        self.setmu(str(f.readline()[0:len(f.readline())-1]))
+        self.setsleep(bool(f.readline()[0:len(f.readline())-1]))
+        self.setlink(f.readline()[0:len(f.readline())-1]))
+        self.setlink_id(f.readline()[0:len(f.readline())-1]))
         f.close()
     def readconfig(self,p_file):
         t = "{0}.cfg".format(p_file)
         try:
             f = open(t, 'r')
-            read = "Name:{0}, Sensor numbre:{1}, Measurement unit:{2}, sleep?:{3}, linked to:{4}, link ID:{5}".format(f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline())
+            read = "Name:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline())
             f.close()
         except:
             print("non")

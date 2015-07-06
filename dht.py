@@ -1,7 +1,7 @@
 _author__ = 'neuraxis'
 from contracts import contract, new_contract
 
-from tools.validations import valsleeptime, corf
+from tools.validations import  corf
 import grovepi
 
 

@@ -1,6 +1,7 @@
 __author__ = 'neuraxis'
 
 from ctypes import *
+
 def hextofloat(s):
     i = int(s, 16)  # Hex to int
     cp = pointer(c_int(i))  # Int to C int

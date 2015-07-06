@@ -12,6 +12,7 @@ def main():
     sensor.setname("lplololol")
     print(sensor.getname())
     print(valsleeptime("2300"))
+    sensor.seton(True)
     sensor.run()
     temp = sensor.getaveragetemp()
 if __name__ == "__main__":

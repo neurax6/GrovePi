@@ -119,7 +119,7 @@ class Dht(object):
         """
         if not isinstance(p_sensor, int):
             raise AssertionError("The sensor must be a int > 0", p_sensor)
-        if p_sensor > 0:
+        if p_sensor < 0:
             raise AssertionError("The sensor must be a int > 0", p_sensor)
         self.__sensor = p_sensor
 

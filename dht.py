@@ -60,13 +60,13 @@ class Dht(object):
             raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
         if not isinstance(p_on, bool):
             raise AssertionError("The sensor must be on or off, based on a bool", p_on)
-        if not isinstance(p_data_temp, None):
+        if p_data_temp is not None:
             raise AssertionError("Must not be set on start", p_data_temp)
-        if not isinstance(p_data_hum, None):
+        if p_data_hum is not None:
             raise AssertionError("Must not be set on start", p_data_hum)
-        if not isinstance(p_average_temp, None):
+        if p_average_temp is not None:
             raise AssertionError("Must not be set on start", p_average_temp)
-        if not isinstance(p_average_hum, None):
+        if p_average_hum is not None:
             raise AssertionError("Must not be set on start", p_average_hum)
         if not p_data_temp:
             p_data_temp = []

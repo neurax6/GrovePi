@@ -409,7 +409,7 @@ class Dht(object):
 
     def readconfig(self):
         try:
-            read = "Name:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(
+            read = "Name:{0} \n Sensor numbre:{1}\n Measurement unit:{2}\n Sleep?:{3}\n Linked to:{4\n }Link ID:{5}".format(
                 self.getname(), self.getsensor(), self.getmu, self.getsleep(), self.getlink(), self.getlinkid())
         except:
             print("non")

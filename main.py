@@ -13,6 +13,7 @@ def main():
     print(sensor.getname())
     print(valsleeptime("2300"))
     sensor.seton(True)
+    sensor.configsave()
     sensor.run()
     sensor.configsave()
     temp = sensor.getaveragetemp()

@@ -363,7 +363,10 @@ class Dht(object):
     def configsave(self):
         '{0}, {1}, {2}'.format('a', 'b', 'c')
         t = "config\{0}.cfg".format(self.getname())
-        f = open(t, 'w')
+        try:
+            f = open(t, 'w')
+        except:
+            print("non")
         f.write("{0}{1}".format(self.getname(), "\n"))
         f.write("{0}{1}".format(self.getsensor(), "\n"))
         f.write("{0}{1}".format(self.getmu(), "\n"))

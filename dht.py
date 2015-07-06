@@ -389,8 +389,8 @@ class Dht(object):
         self.setlink_id(f.readline())
         f.close()
     def readconfig(self):
-        t = "{0}.cfg".format(self.getname())
         try:
+            t = "{0}.cfg".format(self.getname())
             f = open(t, 'r')
             read = "Name:{0}, Sensor numbre:{1}, Measurement unit:{2}, sleep?:{3}, linked to:{4}, link ID:{5}".format(f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline())
             f.close()

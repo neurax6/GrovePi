@@ -408,6 +408,7 @@ class Dht(object):
         return read
 
     def readconfig(self):
+        read = ""
         try:
             read = "Name:{0} \n Sensor numbre:{1}\n Measurement unit:{2}\n Sleep?:{3}\n Linked to:{4\n }Link ID:{5}".format(
                 self.getname(), self.getsensor(), self.getmu, self.getsleep(), self.getlink(), self.getlinkid())

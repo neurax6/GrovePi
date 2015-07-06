@@ -14,6 +14,7 @@ def main():
     print(valsleeptime("2300"))
     sensor.seton(True)
     sensor.run()
+    sensor.configsave()
     temp = sensor.getaveragetemp()
 if __name__ == "__main__":
     main()

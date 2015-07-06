@@ -10,15 +10,16 @@ class Dht(object):
 
 
 
-        :precondition p_name: string
-        :precondition p_sensor: int  & > 0
-        :precondition p_mu: string: == C or == F
-        :precondition p_sleep: Bool
-        :precondition p_sleep_time: string & format '1000', '2300', '2359'
-        :precondition p_data_hum: Float but initialised with None for a empty array.
-        :precondition p_data_temp: Float but initialised with None for a empty array.
-        :precondition p_average_hum: Float but initialised with None for a empty array.
-        :precondition p_average_temp: Float but initialised with None for a empty array.
+        :precondition p_name: Must be a string
+        :precondition p_sensor: Must be a  integer  & > 0
+        :precondition p_mu: Must be a string and == C or F
+        :precondition p_sleep: Must be a bool
+        :precondition p_data_hum: Must be a float but initialised with None for a empty array.
+        :precondition p_data_temp: Must be a float but initialised with None for a empty array.
+        :precondition p_average_hum: Must be a float but initialised with None for a empty array.
+        :precondition p_average_temp: Must be a float but initialised with None for a empty array.
+        :precondition p_link: Must be a string but initialised with None.
+        :precondition p_link_id: Must be a string but initialised with None for a empty array.
 
 
         :param p_name: Names of the device, dht in our case.
@@ -31,17 +32,20 @@ class Dht(object):
         :param p_data_hum: Array of float representing 1 reading of humidity each.
         :param p_average_temp: Array of float representing the average of 60 temperature reading each.
         :param p_average_hum: Array of float representing the average of 60 humidity reading each.
+        :param p_link: A string representing the id of the linked device(ex: coil1)
+        :param p_link_id: A string representing the id of the device(ex: dht1)
 
         :type p_average_hum: Float but initialised with None for a empty array.
         :type p_average_temp: Float but initialised with None for a empty array.
         :type p_data_hum: Float but initialised with None for a empty array.
         :type p_data_temp: Float but initialised with None for a empty array.
-        :type p_mu: string: C or F
-        :type p_name: string
+        :type p_mu: String:
+        :type p_name: String
         :type p_sleep: Bool
-        :type p_sleep_time: string
-        :type p_sensor: int
-
+        :type p_sleep_time: String
+        :type p_sensor: Integer
+        :type p_link: String
+        :type p_link_id: String
 
         """
 
@@ -55,6 +59,8 @@ class Dht(object):
             raise AssertionError("The sensor must be a int > 0", p_sensor)
         if p_sensor < 0:
             raise AssertionError("The sensor must be a int > 0", p_sensor)
+        if not isinstance(p_mu, str):
+            raise AssertionError("The sensor measurement unit  must be  a string 'C' or 'F'", p_mu)
         if not corf(p_mu):
             raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
         if not isinstance(p_sleep, bool):
@@ -100,13 +106,16 @@ class Dht(object):
         self.__averageHum = p_average_hum
         self.__link = p_link
         self.__link_id = p_link_id
-
+        init += 1
 
     def setmu(self, p_mu):
         """
-
-            :param p_mu:
+            :precondition p_mu must be string
+            :precondition p_mu must be C or F
+            :param p_mu: Measurement unit, C or F.
         """
+        if not isinstance(p_mu, str):
+            raise AssertionError("The sensor measurement unit  must be  a string 'C' or 'F'", p_mu)
         if not corf(p_mu):
             raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
         self.__mu = p_mu
@@ -173,8 +182,6 @@ class Dht(object):
         if not isinstance(p_data_hum, float):
             raise AssertionError("Must not be set on start", p_data_hum)
         self.__dataHum.append(p_data_hum)
-
-
 
 
     def setaveragetemp(self, p_average_temp):
@@ -353,6 +360,18 @@ class Dht(object):
             except IOError:
                 print(0)
 
+    def configsave(self):
+        '{0}, {1}, {2}'.format('a', 'b', 'c')
+        t = "config\{0}.cfg".format(self.getname())
+        f = open(t, 'w')
+        f.write("{0}{1}".format(self.getname(), "\n"))
+        f.write("{0}{1}".format(self.getsensor(), "\n"))
+        f.write("{0}{1}".format(self.getmu(), "\n"))
+        f.write("{0}{1}".format(self.getsleep(), "\n"))
+        f.write("{0}{1}".format(self.geton(), "\n"))
+        f.write("{0}{1}".format(self.getlink(), "\n"))
+        f.write("{0}{1}".format(self.getlinkid(), "\n"))
+        f.closed()
 
 
 

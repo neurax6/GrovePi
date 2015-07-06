@@ -6,7 +6,7 @@ from dht import *
 
 def main():
 
-    sensor = Dht("1000")
+    sensor = Dht()
 
     print(sensor.getname())
     sensor.setname("lplololol")

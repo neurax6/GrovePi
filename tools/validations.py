@@ -18,7 +18,8 @@ def valsleeptime(p_sleep_time):
 
 
 def corf(p_mu):
-    if p_mu != 'C' or 'F':
-        return False
-    else:
+    assert isinstance(p_mu, 'C')
+    if p_mu == 'C' or p_mu == 'F':
         return True
+    else:
+        return False

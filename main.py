@@ -9,13 +9,15 @@ def main():
     sensor = Dht()
 
     print(sensor.getname())
-    sensor.setname("lplololol")
+    sensor.setname("dht")
     print(sensor.getname())
-    print(valsleeptime("2300"))
     sensor.seton(True)
-    sensor.configsave()
+    print(sensor.readconfig())
+    sensor.loadconfig("dht.cfg")
+ #   sensor.configsave()
+    print(sensor.readconfig())
+
     sensor.run()
-    sensor.configsave()
     temp = sensor.getaveragetemp()
 if __name__ == "__main__":
     main()

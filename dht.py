@@ -361,7 +361,6 @@ class Dht(object):
                 print(0)
 
     def configsave(self):
-        '{0}, {1}, {2}'.format('a', 'b', 'c')
         t = "{0}.cfg".format(self.getname())
         try:
             f = open(t, 'w')
@@ -374,7 +373,7 @@ class Dht(object):
         f.write("{0}{1}".format(self.geton(), "\n"))
         f.write("{0}{1}".format(self.getlink(), "\n"))
         f.write("{0}{1}".format(self.getlinkid(), "\n"))
-        f.closed()
+        f.close()
 
 
 

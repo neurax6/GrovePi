@@ -46,309 +46,309 @@ class Dht(object):
         """
 
 
-def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=True, p_data_temp=None,
-             p_data_hum=None, p_average_temp=None, p_average_hum=None, p_link_id=None, p_link=None):
-    if not isinstance(p_name, str):
-        raise AssertionError("name is not a string:", p_name)
-    if not isinstance(p_sensor, int):
-        raise AssertionError("The sensor must be a int > 0", p_sensor)
-    if p_sensor > 0:
-        raise AssertionError("The sensor must be a int > 0", p_sensor)
-    if not corf(p_mu):
-        raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
-    if not isinstance(p_sleep, bool):
-        raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
-    if not isinstance(p_on, bool):
-        raise AssertionError("The sensor must be on or off, based on a bool", p_on)
-    if not isinstance(p_data_temp, None):
-        raise AssertionError("Must not be set on start", p_data_temp)
-    if not isinstance(p_data_hum, None):
-        raise AssertionError("Must not be set on start", p_data_hum)
-    if not isinstance(p_average_temp, None):
-        raise AssertionError("Must not be set on start", p_average_temp)
-    if not isinstance(p_average_hum, None):
-        raise AssertionError("Must not be set on start", p_average_hum)
-    if not p_data_temp:
-        p_data_temp = []
-    if not p_data_hum:
-        p_data_hum = []
-    if not p_average_temp:
-        p_average_temp = []
-    if not p_average_hum:
-        p_average_hum = []
-    self.__name = p_name  # Name &/or description of the sensor.
-    self.__sensor = p_sensor  # Sensor number
-    self.__mu = p_mu  # Measurement Unit.
-    # Bool,device sleep,running 24/24 ?
-    self.__sleep = p_sleep
-    # string, military time format : 0000, 1200, 1900
-    self.__on = p_on
-    self.__dataTemp = p_data_temp
-    self.__dataHum = p_data_hum
-    self.__averageTemp = p_average_temp
-    self.__averageHum = p_average_hum
-    self.__link = p_link
-    self.__link_id = p_link_id
+    def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=True, p_data_temp=None,
+                 p_data_hum=None, p_average_temp=None, p_average_hum=None, p_link_id=None, p_link=None):
+        if not isinstance(p_name, str):
+            raise AssertionError("name is not a string:", p_name)
+        if not isinstance(p_sensor, int):
+            raise AssertionError("The sensor must be a int > 0", p_sensor)
+        if p_sensor > 0:
+            raise AssertionError("The sensor must be a int > 0", p_sensor)
+        if not corf(p_mu):
+            raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
+        if not isinstance(p_sleep, bool):
+            raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
+        if not isinstance(p_on, bool):
+            raise AssertionError("The sensor must be on or off, based on a bool", p_on)
+        if not isinstance(p_data_temp, None):
+            raise AssertionError("Must not be set on start", p_data_temp)
+        if not isinstance(p_data_hum, None):
+            raise AssertionError("Must not be set on start", p_data_hum)
+        if not isinstance(p_average_temp, None):
+            raise AssertionError("Must not be set on start", p_average_temp)
+        if not isinstance(p_average_hum, None):
+            raise AssertionError("Must not be set on start", p_average_hum)
+        if not p_data_temp:
+            p_data_temp = []
+        if not p_data_hum:
+            p_data_hum = []
+        if not p_average_temp:
+            p_average_temp = []
+        if not p_average_hum:
+            p_average_hum = []
+        self.__name = p_name  # Name &/or description of the sensor.
+        self.__sensor = p_sensor  # Sensor number
+        self.__mu = p_mu  # Measurement Unit.
+        # Bool,device sleep,running 24/24 ?
+        self.__sleep = p_sleep
+        # string, military time format : 0000, 1200, 1900
+        self.__on = p_on
+        self.__dataTemp = p_data_temp
+        self.__dataHum = p_data_hum
+        self.__averageTemp = p_average_temp
+        self.__averageHum = p_average_hum
+        self.__link = p_link
+        self.__link_id = p_link_id
 
 
-def setmu(self, p_mu):
-    """
+    def setmu(self, p_mu):
+        """
 
-        :param p_mu:
-    """
-    if not corf(p_mu):
-        raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
-    self.__mu = p_mu
-
-
-def setsleep(self, p_sleep):
-    """
-
-        :param p_sleep:
-
-    """
-    if not isinstance(p_sleep, bool):
-        raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
-    self.__sleep = p_sleep
+            :param p_mu:
+        """
+        if not corf(p_mu):
+            raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
+        self.__mu = p_mu
 
 
-def setsensor(self, p_sensor):
-    """
-        :precondition p_sensor: int & >0
-        :param p_sensor: int
-    """
-    if not isinstance(p_sensor, int):
-        raise AssertionError("The sensor must be a int > 0", p_sensor)
-    if p_sensor > 0:
-        raise AssertionError("The sensor must be a int > 0", p_sensor)
-    self.__sensor = p_sensor
+    def setsleep(self, p_sleep):
+        """
+
+            :param p_sleep:
+
+        """
+        if not isinstance(p_sleep, bool):
+            raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
+        self.__sleep = p_sleep
 
 
-def setname(self, p_name):
-    """
-        :precondition string:
-        :param p_name:
-    """
-    if not isinstance(p_name, str):
-        raise AssertionError("name is not a string:", p_name)
-    self.__name = p_name
+    def setsensor(self, p_sensor):
+        """
+            :precondition p_sensor: int & >0
+            :param p_sensor: int
+        """
+        if not isinstance(p_sensor, int):
+            raise AssertionError("The sensor must be a int > 0", p_sensor)
+        if p_sensor > 0:
+            raise AssertionError("The sensor must be a int > 0", p_sensor)
+        self.__sensor = p_sensor
 
 
-def seton(self, p_on):
-    """
-
-        :rtype : object
-    """
-    if not isinstance(p_on, bool):
-        raise AssertionError("The sensor must be on or off, based on a bool", p_on)
-    self.__on = p_on
-
-
-def setdatatemp(self, p_data_temp):
-    """
-
-        :param p_data_temp:
-    """
-    if not isinstance(p_data_temp, None):
-        raise AssertionError("Must not be set on start", p_data_temp)
-
-    self.__dataTemp.append(p_data_temp)
+    def setname(self, p_name):
+        """
+            :precondition string:
+            :param p_name:
+        """
+        if not isinstance(p_name, str):
+            raise AssertionError("name is not a string:", p_name)
+        self.__name = p_name
 
 
-def setdatahum(self, p_data_hum):
-    """
+    def seton(self, p_on):
+        """
 
-        :param p_data_hum:
-    """
-    if not isinstance(p_data_hum, None):
-        raise AssertionError("Must not be set on start", p_data_hum)
-    self.__dataHum.append(p_data_hum)
+            :rtype : object
+        """
+        if not isinstance(p_on, bool):
+            raise AssertionError("The sensor must be on or off, based on a bool", p_on)
+        self.__on = p_on
+
+
+    def setdatatemp(self, p_data_temp):
+        """
+
+            :param p_data_temp:
+        """
+        if not isinstance(p_data_temp, None):
+            raise AssertionError("Must not be set on start", p_data_temp)
+
+        self.__dataTemp.append(p_data_temp)
+
+
+    def setdatahum(self, p_data_hum):
+        """
+
+            :param p_data_hum:
+        """
+        if not isinstance(p_data_hum, None):
+            raise AssertionError("Must not be set on start", p_data_hum)
+        self.__dataHum.append(p_data_hum)
+
+        def setaveragetemp(self, p_average_temp):
+
+            """
+
+                :param p_average_temp:
+            """
+
+        if not isinstance(p_average_temp, None):
+            raise AssertionError("Must not be set on start", p_average_temp)
+
+        self.__averageTemp.append(p_average_temp)
+
 
     def setaveragetemp(self, p_average_temp):
-
         """
 
             :param p_average_temp:
         """
-
-    if not isinstance(p_average_temp, None):
-        raise AssertionError("Must not be set on start", p_average_temp)
-
-    self.__averageTemp.append(p_average_temp)
+        if not isinstance(p_average_temp, None):
+            raise AssertionError("Must not be set on start", p_average_temp)
+        self.__averageHum.append(p_average_temp)
 
 
-def setaveragetemp(self, p_average_temp):
-    """
+    def setaveragehum(self, p_average_hum):
+        """
 
-        :param p_average_temp:
-    """
-    if not isinstance(p_average_temp, None):
-        raise AssertionError("Must not be set on start", p_average_temp)
-    self.__averageHum.append(p_average_temp)
-
-
-def setaveragehum(self, p_average_hum):
-    """
-
-        :param p_average_hum:
-    """
-    if not isinstance(p_average_hum, None):
-        raise AssertionError("Must not be set on start", p_average_hum)
-    self.__averageHum.append(p_average_hum)
+            :param p_average_hum:
+        """
+        if not isinstance(p_average_hum, None):
+            raise AssertionError("Must not be set on start", p_average_hum)
+        self.__averageHum.append(p_average_hum)
 
 
-def setlink(self, p_link):
-    """
+    def setlink(self, p_link):
+        """
 
-        :param p_link:
-    """
-    if not isinstance(p_link, str):
-        raise AssertionError("Must be a string", p_link)
-    self.__link = p_link
-
-
-def setlinkid(self, p_link_id):
-    """
-
-        :param p_link_id:
-    """
-    if not isinstance(p_link_id, str):
-        raise AssertionError("Must be a string", p_link_id)
-    self.__p_link_id = p_link_id
+            :param p_link:
+        """
+        if not isinstance(p_link, str):
+            raise AssertionError("Must be a string", p_link)
+        self.__link = p_link
 
 
-def getname(self):
-    """
-        Get device name.
-        :return: :string:
-    """
-    return self.__name
+    def setlinkid(self, p_link_id):
+        """
+
+            :param p_link_id:
+        """
+        if not isinstance(p_link_id, str):
+            raise AssertionError("Must be a string", p_link_id)
+        self.__p_link_id = p_link_id
 
 
-def getsensor(self):
-    """
-        :return: :int:
-    """
-    return self.__sensor
+    def getname(self):
+        """
+            Get device name.
+            :return: :string:
+        """
+        return self.__name
 
 
-def getmu(self):
-    """
+    def getsensor(self):
+        """
+            :return: :int:
+        """
+        return self.__sensor
 
 
-        :return: :String:
-    """
-    return self.__mu
+    def getmu(self):
+        """
 
 
-def getsleep(self):
-    """
+            :return: :String:
+        """
+        return self.__mu
 
 
-        :return: :rtype:
-    """
-    return self.__sleep
+    def getsleep(self):
+        """
 
 
-def geton(self):
-    """
+            :return: :rtype:
+        """
+        return self.__sleep
 
 
-        :return: :rtype:
-    """
-    return self.__on
+    def geton(self):
+        """
 
 
-def getdatatemp(self):
-    """
+            :return: :rtype:
+        """
+        return self.__on
 
 
-        :return: :rtype:
-    """
-    return self.__dataTemp
+    def getdatatemp(self):
+        """
 
 
-def getdatahum(self):
-    """
+            :return: :rtype:
+        """
+        return self.__dataTemp
 
 
-        :return: :rtype:
-    """
-    return self.__dataHum
+    def getdatahum(self):
+        """
 
 
-def getaveragetemp(self):
-    """
+            :return: :rtype:
+        """
+        return self.__dataHum
 
 
-        :return: :rtype:
-    """
-    return self.__averageTemp
+    def getaveragetemp(self):
+        """
 
 
-def getaveragehum(self):
-    """
+            :return: :rtype:
+        """
+        return self.__averageTemp
 
 
-        :return: :rtype:
-    """
-    return self.__averageHum
+    def getaveragehum(self):
+        """
 
 
-def getlink(self):
-    """
+            :return: :rtype:
+        """
+        return self.__averageHum
 
 
-        :return: :rtype:
-    """
-    return self.__link
+    def getlink(self):
+        """
 
 
-def getlinkid(self):
-    """
+            :return: :rtype:
+        """
+        return self.__link
 
 
-        :return: :rtype:
-    """
-    return self.__link_id
+    def getlinkid(self):
+        """
 
 
-name = property(getname, setname)
-sensor = property(getsensor, setsensor)
-mu = property(getmu, setmu)
-sleep = property(getsleep, setsleep)
-on = property(geton, seton)
-link = property(getlink, setlink)
-link_id = property(getlinkid, setlinkid)
-data_temp = property(getdatatemp, setdatatemp)
-data_hum = property(getdatahum, setdatahum)
-average_temp = property(getaveragetemp, setaveragetemp)
-average_hum = property(getaveragehum, setaveragehum)
+            :return: :rtype:
+        """
+        return self.__link_id
 
 
-def run(self):
-    """
-    × 1.8 + 32
-    """
-    i = 0
-    while self.__on:
+    name = property(getname, setname)
+    sensor = property(getsensor, setsensor)
+    mu = property(getmu, setmu)
+    sleep = property(getsleep, setsleep)
+    on = property(geton, seton)
+    link = property(getlink, setlink)
+    link_id = property(getlinkid, setlinkid)
+    data_temp = property(getdatatemp, setdatatemp)
+    data_hum = property(getdatahum, setdatahum)
+    average_temp = property(getaveragetemp, setaveragetemp)
+    average_hum = property(getaveragehum, setaveragehum)
 
-        try:
 
-            if len(self.__dataTemp) == 59:
-                self.setaveragetemp(sum(self.__dataTemp) / 60)
-                del self.__dataTemp[:]
-            if len(self.__dataHum) == 59:
-                self.setaveragehum(sum(self.__dataHum) / 60)
-                del self.__dataHum[:]
-            [temp, humidity] = grovepi.dht(self.__sensor, 1)
-            self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
-            if self.__mu is 'F':
-                temp = (temp * 1.8) + 32
-                print("entry #:", i, "temp =", temp,getmu(), " humidity =", humidity)
-                i += 1
-        except IOError:
-            print(0)
+    def run(self):
+        """
+        × 1.8 + 32
+        """
+        i = 0
+        while self.__on:
+
+            try:
+
+                if len(self.__dataTemp) == 59:
+                    self.setaveragetemp(sum(self.__dataTemp) / 60)
+                    del self.__dataTemp[:]
+                if len(self.__dataHum) == 59:
+                    self.setaveragehum(sum(self.__dataHum) / 60)
+                    del self.__dataHum[:]
+                [temp, humidity] = grovepi.dht(self.__sensor, 1)
+                self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
+                if self.__mu is 'F':
+                    temp = (temp * 1.8) + 32
+                    print("entry #:", i, "temp =", temp,getmu(), " humidity =", humidity)
+                    i += 1
+            except IOError:
+                print(0)
 
 
 

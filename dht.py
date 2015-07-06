@@ -397,15 +397,24 @@ class Dht(object):
         self.setlinkid(read[0:len(read) - 1])
         f.close()
 
-    def readconfig(self):
-
+    def readconfigfile(self, p_file):
         try:
-            t = "{0}.cfg".format(self.getname())
+            t = "{0}.cfg".format(p_file)
             f = open(t, 'r')
             read = "Name:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline())
             f.close()
         except:
             print("non")
         return read
+
+    def readconfig(self):
+        try:
+            read = "Name:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(
+                self.getname(), self.getsensor(), self.getmu, self.getsleep(), self.getlink(), self.getlinkid())
+        except:
+            print("non")
+        return read
+
+
 
 

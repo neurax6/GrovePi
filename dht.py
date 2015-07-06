@@ -111,7 +111,6 @@ class Dht(object):
             raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)
         self.__mu = p_mu
 
-
     def setsleep(self, p_sleep):
         """
 
@@ -356,7 +355,7 @@ class Dht(object):
                 self.setdatatemp(float(temp)), self.setdatahum(float(humidity))
                 if self.__mu is 'F':
                     temp = (temp * 1.8) + 32
-                    print("entry #:", i, "temp =", temp,getmu(), " humidity =", humidity)
+                    print("entry #:", i, "temp =", temp, getmu(), " humidity =", humidity)
                     i += 1
             except IOError:
                 print(0)

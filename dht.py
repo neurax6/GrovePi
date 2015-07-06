@@ -46,8 +46,9 @@ class Dht(object):
         """
 
 
-    def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=True, p_data_temp=None,
+    def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=False, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None, p_link_id=None, p_link=None):
+        init = 0
         if not isinstance(p_name, str):
             raise AssertionError("name is not a string:", p_name)
         if not isinstance(p_sensor, int):
@@ -60,14 +61,24 @@ class Dht(object):
             raise AssertionError("Must be a bool , sleep? True/1 or False/0", p_sleep)
         if not isinstance(p_on, bool):
             raise AssertionError("The sensor must be on or off, based on a bool", p_on)
-        if p_data_temp is not None:
-            raise AssertionError("Must not be set on start", p_data_temp)
-        if p_data_hum is not None:
-            raise AssertionError("Must not be set on start", p_data_hum)
-        if p_average_temp is not None:
-            raise AssertionError("Must not be set on start", p_average_temp)
-        if p_average_hum is not None:
-            raise AssertionError("Must not be set on start", p_average_hum)
+        if not init:
+            if p_data_temp is not None:
+                raise AssertionError("Must not be set on start", p_data_temp)
+            if p_data_hum is not None:
+                raise AssertionError("Must not be set on start", p_data_hum)
+            if p_average_temp is not None:
+                raise AssertionError("Must not be set on start", p_average_temp)
+            if p_average_hum is not None:
+                raise AssertionError("Must not be set on start", p_average_hum)
+        if init:
+            if not isinstance(p_data_temp, float):
+                raise AssertionError("Must not be set on start", p_data_temp)
+            if not isinstance(p_data_hum, float):
+                raise AssertionError("Must not be set on start", p_data_hum)
+            if not isinstance(p_average_temp, float):
+                raise AssertionError("Must not be set on start", p_average_temp)
+            if not isinstance(p_average_temp, float):
+                raise AssertionError("Must not be set on start", p_average_hum)
         if not p_data_temp:
             p_data_temp = []
         if not p_data_hum:

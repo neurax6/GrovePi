@@ -46,7 +46,7 @@ class Dht(object):
         """
 
 
-def __init__(self, p_sleep_time, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=True, p_data_temp=None,
+def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=True, p_data_temp=None,
              p_data_hum=None, p_average_temp=None, p_average_hum=None, p_link_id=None, p_link=None):
     if not isinstance(p_name, str):
         raise AssertionError("name is not a string:", p_name)

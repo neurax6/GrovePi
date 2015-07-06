@@ -375,6 +375,19 @@ class Dht(object):
         f.write("{0}{1}".format(self.getlinkid(), "\n"))
         f.close()
 
+    def loadconfig(self,p_file):
+        t = "{0}.cfg".format(p_file)
+        try:
+            f = open(t, 'r')
+        except:
+            print("non")
+        self.setname(str(f.readline()))
+        self.setsensor(int(f.readline()))
+        self.setmu(str(f.readline()))
+        self.setsleep(bool(f.readline()))
+        self.setlink(f.readline())
+        self.setlink_id(f.readline())
+        f.close()
 
 
 

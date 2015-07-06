@@ -52,7 +52,7 @@ class Dht(object):
             raise AssertionError("name is not a string:", p_name)
         if not isinstance(p_sensor, int):
             raise AssertionError("The sensor must be a int > 0", p_sensor)
-        if p_sensor > 0:
+        if p_sensor < 0:
             raise AssertionError("The sensor must be a int > 0", p_sensor)
         if not corf(p_mu):
             raise AssertionError("The sensor measurement unit  must be 'C' or 'F'", p_mu)

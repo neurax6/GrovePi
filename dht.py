@@ -362,7 +362,7 @@ class Dht(object):
 
     def configsave(self):
         '{0}, {1}, {2}'.format('a', 'b', 'c')
-        t = "config\{0}.cfg".format(self.getname())
+        t = "{0}.cfg".format(self.getname())
         try:
             f = open(t, 'w')
         except:

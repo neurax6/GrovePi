@@ -1,7 +1,7 @@
 _author__ = 'neuraxis'
 from contracts import contract, new_contract
 
-from tools.validations import  corf
+from tools.validations import valsleeptime, corf
 import grovepi
 
 
@@ -376,20 +376,18 @@ class Dht(object):
         f.close()
 
     def loadconfig(self,p_file):
-
+        t = "{0}.cfg".format(p_file)
         try:
-            t = "{0}.cfg".format(p_file)
             f = open(t, 'r')
-            self.setname(str(f.readline()))
-            self.setsensor(int(f.readline()))
-            self.setmu(str(f.readline()))
-            self.setsleep(bool(f.readline()))
-            self.setlink(f.readline())
-            self.setlinkid(f.readline())
-            f.close()
         except:
             print("non")
-
+        self.setname(str(f.readline()))
+        self.setsensor(int(f.readline()))
+        self.setmu(str(f.readline()))
+        self.setsleep(bool(f.readline()))
+        self.setlink(f.readline())
+        self.setlink_id(f.readline())
+        f.close()
     def readconfig(self,p_file):
         t = "{0}.cfg".format(p_file)
         try:

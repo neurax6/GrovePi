@@ -13,7 +13,7 @@ def main():
     print(sensor.getname())
     sensor.seton(True)
     print(sensor.readconfig())
-    sensor.loadconfig("dht")
+    sensor.loadconfig("dht.cfg")
  #   sensor.configsave()
     print(sensor.readconfig())
 

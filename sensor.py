@@ -28,10 +28,10 @@ class Sensor(object):
             print(self.__sensorlist[i].readconfig())
             i += 1
 
-    def addlink(self):
-
-    def dellink(self):
-
-    def listlink(self):
-
-    def saveconfig(self):
+            # def addlink(self):
+            #
+            #def dellink(self):
+            #
+            #def listlink(self):
+            #
+            #def saveconfig(self):

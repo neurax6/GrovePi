@@ -7,7 +7,7 @@ class Loader(object):
     def __init__(self, p_linked_list=None, p_sensor_list=None, ):
         if not p_sensor_list:
             p_sensor_list = []
-        if not p_table:
+        if not p_linked_list:
             p_linked_list = []
         self.__sensorlist = p_sensor_list
         self.__linkedlist = p_linked_list

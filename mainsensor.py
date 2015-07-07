@@ -10,7 +10,7 @@ def main():
     config.addsensor(sensor)
     config.addsensor(sensor2)
     print(config.listsensor())
-    config.delsensor(666)
+
     print(config.listsensor())
 
 

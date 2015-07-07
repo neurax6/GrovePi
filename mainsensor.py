@@ -1,11 +1,11 @@
 __author__ = 'neuraxis'
 from dht import Dht
-from sensor import Sensor
+from sensor import Loader
 
 
 def main():
     sensor = Dht()
-    config = Sensor()
+    config = Loader()
     config.addsensor(sensor)
     print(config.listsensor())
 

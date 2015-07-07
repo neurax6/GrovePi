@@ -4,14 +4,14 @@ from sensor import *
 
 
 def main():
-    sensor = Dht(p_link=666, p_link_id=667)
-    sensor2 = Dht(p_link=667, p_link_id=666)
-    sensor3 = Dht(p_link=677, p_link_id=777)
+    sensor = Dht(p_link=5, p_link_id=1)
+    sensor2 = Dht(p_link=6, p_link_id=2)
+    sensor3 = Dht(p_link=7, p_link_id=3)
     config = Loader()
     config.addsensor(sensor)
     config.addsensor(sensor2)
     print(config.listsensor())
-    config.delsensor(666)
+    config.delsensor(1)
     print(config.listsensor())
     config.addsensor(sensor3)
     print(config.listsensor())

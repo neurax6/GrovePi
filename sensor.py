@@ -17,7 +17,7 @@ class Loader(object):
 
     def delsensor(self, p_linkid):
         for i in self.__sensorlist:
-            if i.reqlinkid() == p_linkid:
+            if i.getlinkid() == p_linkid:
                 self.__sensorlist.__delitem__(i)
 
 

@@ -10,7 +10,7 @@ class Dht(object):
 
 
 
-        :precondition p_name: Must be a string
+        :precondition p_type: Must be a string
         :precondition p_sensor: Must be a  integer  & > 0
         :precondition p_mu: Must be a string and == C or F
         :precondition p_sleep: Must be a bool
@@ -22,7 +22,7 @@ class Dht(object):
         :precondition p_link_id: Must be a string but initialised with None for a empty array.
 
 
-        :param p_name: Names of the device, dht in our case.
+        :param p_type: Type of the device, dht in our case.
         :param p_sensor: Sensor device number on your GrovePi board.
         :param p_mu: Measurement unit , Celcius or Fahrenheits. Data are always stored in Celcius,changing the setting to 'F' will only affect display.
         :param p_sleep: Device sleeping ?
@@ -40,7 +40,7 @@ class Dht(object):
         :type p_data_hum: Float but initialised with None for a empty array.
         :type p_data_temp: Float but initialised with None for a empty array.
         :type p_mu: String:
-        :type p_name: String
+        :type p_tape: String
         :type p_sleep: Bool
         :type p_sleep_time: String
         :type p_sensor: Integer
@@ -50,11 +50,11 @@ class Dht(object):
         """
 
 
-    def __init__(self, p_name='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=False, p_data_temp=None,
+    def __init__(self, p_type='dht', p_sensor=5, p_mu="C", p_sleep=False, p_on=False, p_data_temp=None,
                  p_data_hum=None, p_average_temp=None, p_average_hum=None, p_link_id=None, p_link=None):
         init = 0
-        if not isinstance(p_name, str):
-            raise AssertionError("name is not a string:", p_name)
+        if not isinstance(p_type, str):
+            raise AssertionError("type is not a string:", p_type)
         if not isinstance(p_sensor, int):
             raise AssertionError("The sensor must be a int > 0", p_sensor)
         if p_sensor < 0:
@@ -93,7 +93,7 @@ class Dht(object):
             p_average_temp = []
         if not p_average_hum:
             p_average_hum = []
-        self.__name = p_name  # Name &/or description of the sensor.
+        self.__type = p_type  # type &/or description of the sensor.
         self.__sensor = p_sensor  # Sensor number
         self.__mu = p_mu  # Measurement Unit.
         # Bool,device sleep,running 24/24 ?
@@ -143,14 +143,14 @@ class Dht(object):
         self.__sensor = p_sensor
 
 
-    def setname(self, p_name):
+    def settype(self, p_type):
         """
             :precondition string:
-            :param p_name:
+            :param p_type:
         """
-        if not isinstance(p_name, str):
-            raise AssertionError("name is not a string:", p_name)
-        self.__name = p_name
+        if not isinstance(p_type, str):
+            raise AssertionError("type is not a string:", p_type)
+        self.__type = p_type
 
 
     def seton(self, p_on):
@@ -224,12 +224,12 @@ class Dht(object):
         self.__p_link_id = p_link_id
 
 
-    def getname(self):
+    def gettype(self):
         """
-            Get device name.
+            Get device type.
             :return: :string:
         """
-        return self.__name
+        return self.__type
 
 
     def getsensor(self):
@@ -320,7 +320,7 @@ class Dht(object):
         return self.__link_id
 
 
-    name = property(getname, setname)
+    type = property(gettype, settype)
     sensor = property(getsensor, setsensor)
     mu = property(getmu, setmu)
     sleep = property(getsleep, setsleep)
@@ -361,12 +361,12 @@ class Dht(object):
                 print(0)
 
     def configsave(self):
-        t = "{0}.cfg".format(self.getname())
+        t = "{0}.cfg".format(self.gettype())
         try:
             f = open(t, 'w')
         except:
             print("non")
-        f.write("{0}{1}".format(self.getname(), "\n"))
+        f.write("{0}{1}".format(self.gettype(), "\n"))
         f.write("{0}{1}".format(self.getsensor(), "\n"))
         f.write("{0}{1}".format(self.getmu(), "\n"))
         f.write("{0}{1}".format(self.getsleep(), "\n"))
@@ -382,7 +382,7 @@ class Dht(object):
         except:
             print("non")
         read = f.readline()
-        self.setname(str(read[0:len(read) - 1]))
+        self.settype(str(read[0:len(read) - 1]))
         read = f.readline()
         self.setsensor(int(read[0:len(read) - 1]))
         read = f.readline()
@@ -401,7 +401,8 @@ class Dht(object):
         try:
             t = "{0}.cfg".format(p_file)
             f = open(t, 'r')
-            read = "Name:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline())
+            read = "type:{0}Sensor numbre:{1}Measurement unit:{2}Sleep?:{3}Linked to:{4}Link ID:{5}".format(
+                f.readline(), f.readline(), f.readline(), f.readline(), f.readline(), f.readline())
             f.close()
         except:
             print("non")
@@ -410,12 +411,23 @@ class Dht(object):
     def readconfig(self):
         read = ""
         try:
-            read = "Name:{0}\n Sensor numbre:{1}\n Measurement unit:{2}\n Sleep?:{3}\n Linked to:{4}\n Link ID:{5}\n".format(
-                self.getname(), self.getsensor(), self.getmu(), self.getsleep(), self.getlink(), self.getlinkid())
+            read = "type:{0}\n Sensor numbre:{1}\n Measurement unit:{2}\n Sleep?:{3}\n Linked to:{4}\n Link ID:{5}\n".format(
+                self.gettype(), self.getsensor(), self.getmu(), self.getsleep(), self.getlink(), self.getlinkid())
         except:
             print("non")
         return read
 
+    def gettempreading(self):
+        return self.__dataTemp[-1]
+
+    def gethumreading(self):
+        return self.__dataHum[-1]
+
+    def getavtempreading(self):
+        return self.__averageTemp[-1]
+
+    def getavhumreading(self):
+        return self.__averageHum[-1]
 
 
 

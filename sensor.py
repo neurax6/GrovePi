@@ -16,13 +16,10 @@ class Loader(object):
         self.__sensorlist.append(copy.deepcopy(p_object))
 
     def delsensor(self, p_linkid):
-        i = 0
-        while i < len(self.__sensorlist):
-            one = str(p_linkid)
-            two = str(self.__sensorlist[i].reqlinkid())
-            if one == two:
-                del self.__sensorlist[i]
-            1 += 1
+        for i in self.__sensorlist:
+            if i.reqlinkid() == p_linkid:
+                self.__sensorlist.__delitem__(i)
+
 
     def listsensor(self):
         i = 0

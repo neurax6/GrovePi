@@ -1,6 +1,6 @@
 __author__ = 'neuraxis'
-from dht import Dht
-from sensor import Loader
+from dht import *
+from sensor import *
 
 
 def main():

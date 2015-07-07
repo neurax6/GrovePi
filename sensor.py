@@ -18,7 +18,9 @@ class Loader(object):
     def delsensor(self, p_linkid):
         i = 0
         while i < len(self.__sensorlist):
-            if self.__sensorlist[1].reqlinkid() == p_linkid:
+            one = str(p_linkid)
+            two = str(self.__sensorlist[1].reqlinkid())
+            if one == two:
                 del self.__sensorlist[i]
             1 += 1
 

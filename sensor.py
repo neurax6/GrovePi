@@ -5,7 +5,7 @@ import dht
 
 class Sensor(object):
     def __init__(self, p_linked_list=None, p_sensor_list=None, ):
-        if not p_sensor_list
+        if not p_sensor_list:
             p_sensor_list = []
         if not p_table:
             p_linked_list = []

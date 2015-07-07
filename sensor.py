@@ -30,8 +30,8 @@ class Sensor(object):
 
     def addlink(self):
 
-        def dellink(self):
+    def dellink(self):
 
-        def listlink(self):
+    def listlink(self):
 
-        def saveconfig(self):
+    def saveconfig(self):

@@ -19,7 +19,7 @@ class Loader(object):
         i = 0
         while i < len(self.__sensorlist):
             one = str(p_linkid)
-            two = str(self.__sensorlist[1].reqlinkid())
+            two = str(self.__sensorlist[i].reqlinkid())
             if one == two:
                 del self.__sensorlist[i]
             1 += 1

@@ -4,8 +4,8 @@ from sensor import *
 
 
 def main():
-    sensor = Dht(p_link_id=666)
-    sensor2 = Dht(p_link_id=667)
+    sensor = Dht(p_link=666, p_link_id=667)
+    sensor2 = Dht(p_link=667, p_link_id=666)
     config = Loader()
     config.addsensor(sensor)
     config.addsensor(sensor2)

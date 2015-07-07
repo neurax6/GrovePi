@@ -21,7 +21,9 @@ class Loader(object):
             test = self.__sensorlist[i]
             if p_linkid == test.getlinkid():
                 self.__sensorlist.remove(self.__sensorlist[i])
-        i += 1
+                i += 1
+            else:
+                i += 1
 
 
     def listsensor(self):
